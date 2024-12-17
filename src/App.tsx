@@ -6,14 +6,20 @@ function App() {
   const map = createMaze();
 
   useEffect(() => {
-    pre.current.innerText = map.mask().toString();
+    pre.current.innerText = map
+      .query({ height: 32, width: 32, x: map.x, y: map.y })
+      .mask()
+      .toString();
   }, [map]);
 
   window.document.addEventListener("keydown", (event: KeyboardEvent) => {
     if (event.key === "ArrowUp") {
       map.y += 1;
       console.log(map.y);
-      pre.current.innerText = map.mask().toString();
+      pre.current.innerText = map
+        .query({ height: 32, width: 32, x: map.x, y: map.y })
+        .mask()
+        .toString();
     }
   });
 
